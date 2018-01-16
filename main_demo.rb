@@ -28,7 +28,7 @@ DEMO_VALID_ARGS = {
 #                  ^^^^^^
 # first keyword must be status for this keyword-chain to be valid
 		set:         [["set"], ["foo","bar","baz"],          :INPUT]
-#   ^^^            ^^^     ^^^   ^^^   ^^^              ^^^^^
+#   ^^^            ^^^       ^^^   ^^^   ^^^              ^^^^^
 # kw-chain id,  first kw, possible following keywords, custom user input
 	}
 }
@@ -129,5 +129,4 @@ end
 
 opts = get_options DEMO_VALID_ARGS
 ap opts
-
 
