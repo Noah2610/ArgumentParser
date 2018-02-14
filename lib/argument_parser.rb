@@ -1,4 +1,3 @@
-#!/bin/env ruby
 
 class ArgumentParser
 	def self.get_arguments valid_args = {}
