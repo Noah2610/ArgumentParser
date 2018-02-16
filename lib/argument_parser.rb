@@ -1,4 +1,9 @@
 
+####################################################
+## Simple command-line arguments / options parser ##
+##  https://github.com/Noah2610/ArgumentParser    ##
+####################################################
+
 class ArgumentParser
 	def self.get_arguments valid_args = {}
 		return nil  if (valid_args.nil? || valid_args.empty?)
@@ -11,6 +16,7 @@ class ArgumentParser
 		set_opt_val_of = nil
 		set_kw_val_of = nil
 		cur_kw_chain = nil
+		read_user_inputs = false
 		## Loop through all command-line arguments
 		ARGV.each do |argument|
 
@@ -74,20 +80,32 @@ class ArgumentParser
 				else
 					## Check if argument is valid for next kw in kw-chain
 					kw_chain_index = ret[:keywords][cur_kw_chain].size
-					next  if (kw_chain_index >= valid_args[:keywords][cur_kw_chain].size)
-					unless (valid_args[:keywords][cur_kw_chain][kw_chain_index] == :INPUT)
+					## Read unlimited custom user input
+					if (read_user_inputs)
+						ret[:keywords][cur_kw_chain] << argument
+					else
+						## If not unlimited custom user input and argument's length has exceeded
+						## keyword-chain's possible length, then skip
+						next  if (kw_chain_index >= valid_args[:keywords][cur_kw_chain].size)
+					end
+					if    (valid_args[:keywords][cur_kw_chain][kw_chain_index] == :INPUT)
+						## Custom user input (single)
+						ret[:keywords][cur_kw_chain] << argument
+
+					elsif (valid_args[:keywords][cur_kw_chain][kw_chain_index] == :INPUTS)
+						## Custom user input (unlimited)
+						ret[:keywords][cur_kw_chain] << argument
+						read_user_inputs = true
+
+					else
 						if (valid_args[:keywords][cur_kw_chain][kw_chain_index].include? argument)
 							ret[:keywords][cur_kw_chain] << argument
 						end
-
-					else
-						## Custom user input
-						ret[:keywords][cur_kw_chain] << argument
 					end
 				end
 			end
 
-		end
+		end  # end arguments loop
 
 		return ret
 	end

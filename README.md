@@ -53,13 +53,15 @@ VALID_ARGUMENTS = {
 
   ## Keywords are positional, ignoring option positions
   keywords: {
-    set:           [['set','define'],         ['var','constant'],       :INPUT]
-#   ^^^             ^^^^^^^^^^^^^^^^          ^^^^^^^^^^^^^^^^^^        ^^^^^^
-# Main identifier   list of possible first    list of possible second   special symbol
-# of this           keywords, user can only   keywords                  that takes any
-# keyword-chain     use one of these at the                             user input and
-#                   first position                                      places it at this
-#                   (ignoring options)                                  position
+    set:           [['set','define'],         ['var','constant'],       :INPUT,             :INPUTS]
+#   ^^^             ^^^^^^^^^^^^^^^^          ^^^^^^^^^^^^^^^^^^        ^^^^^^              ^^^^^^^
+# Main identifier   list of possible first    list of possible second   special symbol      special symbol,
+# of this           keywords, user can only   keywords                  that takes any      similar to :INPUT
+# keyword-chain     use one of these at the                             user input and      but takes an unlimited
+#                   first position                                      places it at this   amount of user input;
+#                   (ignoring options)                                  position            this should be the last
+#                                                                       (one argument)      keyword in the chain
+#                                                                                           (multiple arguments)
   }
 }
 
