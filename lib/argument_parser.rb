@@ -83,6 +83,7 @@ class ArgumentParser
 					## Read unlimited custom user input
 					if (read_user_inputs)
 						ret[:keywords][cur_kw_chain] << argument
+						next
 					else
 						## If not unlimited custom user input and argument's length has exceeded
 						## keyword-chain's possible length, then skip
