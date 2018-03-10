@@ -3,7 +3,7 @@
 require_relative './lib/argument_parser'
 
 ## require awesome_print gem for formated hash output, if installed
-AP_INSTALLED = `gem list -i awesome_print`.strip == 'true'
+AP_INSTALLED = !!(Gem::Specification.find_all_by_name('argument_parser').any?)
 require 'awesome_print'  if (AP_INSTALLED)
 
 ## Here the arguments you want the user to be able to use are defined.
