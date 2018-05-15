@@ -71,7 +71,7 @@ class ArgumentParser
 				## Check if in kw-chain or for valid keyword
 				if (cur_kw_chain.nil?)
 					valid_args[:keywords].each do |id, val|
-						if (val.first.include? argument)
+						if ([:INPUT, :INPUTS].include?(val.first) || val.first.include?(argument))
 							ret[:keywords][id] = [argument]
 							cur_kw_chain = id
 							break
