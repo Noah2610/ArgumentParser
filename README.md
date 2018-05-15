@@ -22,7 +22,7 @@ require it like this `require_relative './PATH/TO/argument_parser'`.
 This gem provides the class `ArgumentParser`.  
 Currently it only contains a single method: `ArgumentParser.get_arguments`.  
 You pass it a hash which contains your defined, valid arguments.  
-An example usage script is included in this repo `./demo.rb`  
+An example usage script is included in this repo `./DEMO.rb`  
 in which there is a constant called `DEMO_VALID_ARGUMENTS`, that will show you  
 the required syntax of the hash that is passed to the method.  
   
@@ -72,7 +72,7 @@ puts "Given Arguments:"
 ap user_arguments        # Print the user's arguments in a formated structure, using the awesome_print gem
 ```
 ```sh
-$ ./demo.rb -hv set --status FOO constant BAR --this -is ignored
+$ ./DEMO.rb -hv set --status FOO constant one --this -is --ignored two
 Given Arguments:
 {
    :options => {
@@ -84,20 +84,21 @@ Given Arguments:
       :set => [
           [0] "set",
           [1] "constant",
-          [2] "BAR"
+          [2] "one",
+          [2] "two"
       ]
   }
 }
 ```
 The above script won't just work if you copy/paste it, use the included  
-`./demo.rb` script, which uses the same configuration as above.  
+`./DEMO.rb` script, which uses the same configuration as above.  
   
-You can see that those three extra options / keywords (`--this -is ignored`)  
-at the end are ignored because they weren't defined in `VALID_ARGUMENTS`.  
+You can see that those three extra options (`--this -is --ignored`)  
+are ignored because they weren't defined in `VALID_ARGUMENTS`.  
 This will probably change in the future, so the user gets feedback  
 about their arguments being invalid.
   
-When using the `./demo.rb` script it is recommended to have the gem  
+When using the `./DEMO.rb` script it is recommended to have the gem  
 [`awesome_print`](https://github.com/awesome-print/awesome_print) installed; the gem _pretty prints_ ruby objects.  
 It's _pretty awesome_.  
 Install with `$ gem install awesome_print`.  
