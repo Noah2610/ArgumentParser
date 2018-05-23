@@ -1,4 +1,3 @@
-
 ####################################################
 ## Simple command-line arguments / options parser ##
 ##  https://github.com/Noah2610/ArgumentParser    ##
@@ -9,7 +8,7 @@ class ArgumentParser
 		return nil  if (valid_args.nil? || valid_args.empty?)
 
 		ret = {
-			options:     {},
+			options:  {},
 			keywords: {}
 		}
 
@@ -111,4 +110,3 @@ class ArgumentParser
 		return ret
 	end
 end
-
