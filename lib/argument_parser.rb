@@ -23,7 +23,7 @@ class ArgumentParser
 			## Check valid SINGLE options
 			if (argument =~ /\A-[\w\d]+\z/)
 				## Get all options of argument
-				cur_opts = argument.delete("-").split("")
+				cur_opts = argument.sub(/\A-/,"").split("")
 				valid_args[:single].each do |id, val|
 					## Loop through every command-line option of current argument
 					#  ex.: -abc -> a,b,c
@@ -41,8 +41,8 @@ class ArgumentParser
 				end
 
 			## Check valid DOUBLE options
-			elsif (argument =~ /\A--[\w\d]+\z/)
-				cur_opt = argument.delete("--")
+			elsif (argument =~ /\A--[\w\d\-]+\z/)
+				cur_opt = argument.sub(/\A--/,"")
 				valid_args[:double].each do |id, val|
 					if (val.first.include? cur_opt)
 						## Check if option takes value
